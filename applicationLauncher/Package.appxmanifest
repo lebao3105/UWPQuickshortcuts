@@ -8,7 +8,7 @@
 
   <Identity
     Name="7e132d12-980f-4bd1-809a-53e1b5cd52d2"
-    Publisher="CN=User"
+    Publisher="CN=lebao3105"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="7e132d12-980f-4bd1-809a-53e1b5cd52d2" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
@@ -45,7 +45,4 @@
       </uap:VisualElements>
     </Application>
   </Applications>
-
-  <Capabilities>
-    <Capability Name="internetClient"/></Capabilities>
 </Package>

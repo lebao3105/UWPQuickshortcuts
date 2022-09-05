@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Security.ExchangeActiveSyncProvisioning;
 using Microsoft.Toolkit.Uwp.Notifications;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -53,9 +54,27 @@ namespace applicationLauncher
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            RunTask("ms-actioncenter://", "Action center");
+            // I just found that ms-actioncenter:// does not available on Windows Phone, so I made this
+            EasClientDeviceInformation info = new EasClientDeviceInformation();
+            string system = info.OperatingSystem;
+            if (system == "WindowsPhone")
+            {
+                ContentDialog dlg = new ContentDialog
+                {
+                    Title = "Note",
+                    Content = "Procotol ms-actioncenter:// is not available on Windows Phone",
+                    CloseButtonText = "OK"
+                };
+                await dlg.ShowAsync();
+                return;
+            }
+            
+            else
+            {
+                RunTask("ms-actioncenter://", "Action center");
+            }
         }
 
         // wifi

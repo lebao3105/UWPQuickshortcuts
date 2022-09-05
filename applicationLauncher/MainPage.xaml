@@ -21,7 +21,7 @@
             <Button.Flyout>
                 <Flyout>
                     <StackPanel>
-                        <TextBlock>Choose one...(will add more)</TextBlock>
+                        <TextBlock>Choose one...(I will add more)</TextBlock>
                         <Button x:Name="wifi_settings" Click="Button_Click_1">Wifi</Button>
                         <Button x:Name="bluetooth_settings" Click="bluetooth_settings_Click">Bluetooth</Button>
                         <Button x:Name="lock_settings" Click="lock_settings_Click">Look Screen</Button>
