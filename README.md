@@ -8,3 +8,5 @@ Available on Windows 10 Anniversary Update (14393) and higher. Basically I made 
 2. Clone this project, then open the solution file (.sln) in VS.
 3. Build by click Local machine button (the button that with a green play icon)
 
+## Screenshots
+![image](https://user-images.githubusercontent.com/77564176/188419704-6c0e8077-277b-4248-b3dd-0d658fe4bf72.png)
