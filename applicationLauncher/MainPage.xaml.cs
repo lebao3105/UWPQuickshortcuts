@@ -31,6 +31,9 @@ namespace applicationLauncher
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Launches a application from its defined Uri.
+        /// </summary>
         private async Task RunTask(string command, string name)
         {
             var link = new Uri(command);
@@ -73,14 +76,8 @@ namespace applicationLauncher
             
             else
             {
-                RunTask("ms-actioncenter://", "Action center");
+                await RunTask("ms-actioncenter://", "Action center");
             }
-        }
-
-        // wifi
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            RunTask("ms-settings-wifi://", "Wifi Settings");
         }
 
         private async void Button_Click_2(object sender, RoutedEventArgs e)
@@ -94,19 +91,10 @@ namespace applicationLauncher
             await dialog.ShowAsync();
         }
 
-        private void bluetooth_settings_Click(object sender, RoutedEventArgs e)
+        private async void settings_Click(object sender, RoutedEventArgs e)
         {
-            RunTask("ms-settings-bluetooth://", "Bluetooth Settings");
-        }
-
-        private void lock_settings_Click(object sender, RoutedEventArgs e)
-        {
-            RunTask("ms-settings-lock://", "Look Screen Settings");
-        }
-
-        private void settings_Click(object sender, RoutedEventArgs e)
-        {
-            RunTask("ms-settings://", "Settings");
+            QuickShortcuts.ContentDialog1 result = new QuickShortcuts.ContentDialog1();
+            await result.ShowAsync();
         }
     }
 }
