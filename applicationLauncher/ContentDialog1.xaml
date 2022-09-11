@@ -27,7 +27,11 @@
             <x:String>Camera</x:String>
             <x:String>Mouse (and touchpad)</x:String>
             <x:String>USB</x:String>
-            <!--Network settings goes here-->
+            <!--Network settings here-->
+            <x:String>Wifi</x:String>
+            <x:String>Airplane mode</x:String>
+            <x:String>Cellular</x:String>
+            <x:String>Mobile hostpot</x:String>
             <!--Just launch Settings-->
             <x:String>Settings</x:String>
         </ComboBox>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.Toolkit.Uwp.Notifications;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 // The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,41 +30,32 @@ namespace QuickShortcuts
         private string selected_item;
         private string cmd;
 
-        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        // available settings
+        private readonly string[] its = {
+            "Sign-in options", "Your info", "Apps and Features", "Default apps",
+            "Bluetooth", "Camera", "Mouse (and touchpad)", "USB", "Wifi", "Airplane mode",
+            "Cellular", "Mobile hotspot", "Settings"
+        };
+
+        private readonly string[] settings = {
+            "signinoptions", "yourinfo", "appsfeatures", "defaultapps", "bluetooth", "camera",
+            "mousetouchpad", "usb", "network-wifi", "proximity", "network-cellular",
+            "network-mobilehotspot", ""
+        };
+
+        private async void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            switch (selected_item)
+            for (int i = 0; i < its.Length; i++)
             {
-                case "Sign-in options":
-                    cmd = "signinoptions";
+                if (selected_item == its[i]) {
+                    cmd = settings[i];
+                    await RunTask2();
                     break;
-                case "Your info":
-                    cmd = "yourinfo";
-                    break;
-                case "Apps and Features":
-                    cmd = "appsfeatures";
-                    break;
-                case "Default apps":
-                    cmd = "defaultapps";
-                    break;
-                case "Bluetooth":
-                    cmd = "bluetooth";
-                    break;
-                case "Camera":
-                    cmd = "camera";
-                    break;
-                case "Mouse (and touchpad)":
-                    cmd = "mousetouchpad";
-                    break;
-                case "USB":
-                    cmd = "usb";
-                    break;
-                case "Settings":
-                    cmd = "";
-                    break;
-                default:
+                } else {
+                    Debug.WriteLine("Not OK");
                     return;
+                }
             }
-            RunTask2();
         }
 
         /// <summary>
@@ -71,7 +63,7 @@ namespace QuickShortcuts
         /// </summary>
         private async Task RunTask2()
         {
-            var link = new Uri("ms-settings:" + cmd);
+            var link = new Uri("ms-settings://" + cmd);
             var isSuccess = await Windows.System.Launcher.LaunchUriAsync(link);
             if (isSuccess)
             {

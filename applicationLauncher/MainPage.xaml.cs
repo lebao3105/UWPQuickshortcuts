@@ -33,6 +33,7 @@ namespace applicationLauncher
 
         /// <summary>
         /// Launches a application from its defined Uri.
+        /// TODO: Move this to a class
         /// </summary>
         private async Task RunTask(string command, string name)
         {
@@ -44,7 +45,7 @@ namespace applicationLauncher
                     .AddArgument("action", "viewConversation")
                     .AddArgument("conversationId", 9813)
                     .AddText("Completed!")
-                    .AddText("Done - successfully started " + name)
+                    .AddText("Done - successfully opened " + name)
                     .Show();
             } else
             {
@@ -67,7 +68,7 @@ namespace applicationLauncher
                 ContentDialog dlg = new ContentDialog
                 {
                     Title = "Note",
-                    Content = "Procotol ms-actioncenter:// is not available on Windows Phone",
+                    Content = "Protocol ms-actioncenter:// is not available on Windows Phone",
                     CloseButtonText = "OK"
                 };
                 await dlg.ShowAsync();
