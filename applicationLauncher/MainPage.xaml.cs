@@ -31,33 +31,6 @@ namespace applicationLauncher
             this.InitializeComponent();
         }
 
-        /// <summary>
-        /// Launches a application from its defined Uri.
-        /// TODO: Move this to a class
-        /// </summary>
-        private async Task RunTask(string command, string name)
-        {
-            var link = new Uri(command);
-            var isSuccess = await Windows.System.Launcher.LaunchUriAsync(link);
-            if (isSuccess)
-            {
-                new ToastContentBuilder()
-                    .AddArgument("action", "viewConversation")
-                    .AddArgument("conversationId", 9813)
-                    .AddText("Completed!")
-                    .AddText("Done - successfully opened " + name)
-                    .Show();
-            } else
-            {
-                new ToastContentBuilder()
-                    .AddArgument("action", "viewConversation")
-                    .AddArgument("conversationId", 9813)
-                    .AddText("Failed")
-                    .AddText("There was error(s) while starting "+name)
-                    .Show();
-            }
-        }
-
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             // I just found that ms-actioncenter:// does not available on Windows Phone, so I made this
@@ -67,7 +40,7 @@ namespace applicationLauncher
             {
                 ContentDialog dlg = new ContentDialog
                 {
-                    Title = "Note",
+                    Title = "Infomation",
                     Content = "Protocol ms-actioncenter:// is not available on Windows Phone",
                     CloseButtonText = "OK"
                 };
@@ -77,7 +50,7 @@ namespace applicationLauncher
             
             else
             {
-                await RunTask("ms-actioncenter://", "Action center");
+                await QuickShortcuts.launcher.OpenProtocol("ms-actioncenter://", "Action center");
             }
         }
 

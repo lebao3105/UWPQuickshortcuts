@@ -31,62 +31,68 @@ namespace QuickShortcuts
         private string cmd;
 
         // available settings
-        private readonly string[] its = {
-            "Sign-in options", "Your info", "Apps and Features", "Default apps",
-            "Bluetooth", "Camera", "Mouse (and touchpad)", "USB", "Wifi", "Airplane mode",
-            "Cellular", "Mobile hotspot", "Settings"
-        };
+        //private readonly string[] its = {
+        //    "Sign-in options", "Your info", "Apps and Features", "Default apps",
+        //    "Bluetooth", "Camera", "Mouse (and touchpad)", "USB", "Wifi", "Airplane mode",
+        //    "Cellular", "Mobile hotspot", "Settings"
+        //};
 
-        private readonly string[] settings = {
-            "signinoptions", "yourinfo", "appsfeatures", "defaultapps", "bluetooth", "camera",
-            "mousetouchpad", "usb", "network-wifi", "proximity", "network-cellular",
-            "network-mobilehotspot", ""
-        };
+        //private readonly string[] settings = {
+        //    "signinoptions", "yourinfo", "appsfeatures", "defaultapps", "bluetooth", "camera",
+        //    "mousetouchpad", "usb", "network-wifi", "proximity", "network-cellular",
+        //    "network-mobilehotspot", ""
+        //};
 
-        private async void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            for (int i = 0; i < its.Length; i++)
+            switch (selected_item)
             {
-                if (selected_item == its[i]) {
-                    cmd = settings[i];
-                    await RunTask2();
+                case "Sign-in options":
+                    cmd = "signinoptions";
                     break;
-                } else {
-                    Debug.WriteLine("Not OK");
-                    return;
-                }
+                case "Your info":
+                    cmd = "yourinfo";
+                    break;
+                case "Apps and Features":
+                    cmd = "appsfeatures";
+                    break;
+                case "Default apps":
+                    cmd = "defaultapps";
+                    break;
+                case "Bluetooth":
+                    cmd = "bluetooth";
+                    break;
+                case "Camera":
+                    cmd = "camera";
+                    break;
+                case "Mouse (and touchpad)":
+                    cmd = "mousetouchpad";
+                    break;
+                case "USB":
+                    cmd = "usb";
+                    break;
+                case "Wifi":
+                    cmd = "network-wifi";
+                    break;
+                case "Airplane mode":
+                    cmd = "proximity";
+                    break;
+                case "Cellular":
+                    cmd = "network-cellular";
+                    break;
+                case "Mobile hotspot":
+                    cmd = "network-mobilehotpost";
+                    break;
+                case "Settings":
+                    cmd = "";
+                    break;
             }
-        }
-
-        /// <summary>
-        /// Yet another RunTask function.
-        /// </summary>
-        private async Task RunTask2()
-        {
-            var link = new Uri("ms-settings://" + cmd);
-            var isSuccess = await Windows.System.Launcher.LaunchUriAsync(link);
-            if (isSuccess)
-            {
-                new ToastContentBuilder()
-                    .AddArgument("action", "viewConversation")
-                    .AddArgument("conversationId", 9813)
-                    .AddText("Completed!")
-                    .AddText("Done - successfully opened your prefered setting")
-                    .Show();
-            }
-            else
-            {
-                new ToastContentBuilder()
-                    .AddArgument("action", "viewConversation")
-                    .AddArgument("conversationId", 9813)
-                    .AddText("Failed")
-                    .AddText("There was error(s) while opening Settings.")
-                    .Show();
-            }
+            launcher.OpenProtocol("ms-settings://" + cmd, selected_item);
         }
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            // Do nothing
         }
 
         private void ItemsCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)

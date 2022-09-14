@@ -19,6 +19,7 @@
                 Height="34" Width="123" Click="settings_Click" HorizontalAlignment="Center"/>
         <Button Content="About" Margin="0,445,0,0" VerticalAlignment="Top"
                 Height="34" Width="123" Click="Button_Click_2" HorizontalAlignment="Center"/>
-        <TextBlock HorizontalAlignment="Left" Margin="47,649,0,0" Text="*Note that not all links are available in your system." TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFEEFF00" Width="392"/>
+        <TextBlock HorizontalAlignment="Left" Margin="50,639,0,0" Text="*Note that not all links are available in your system."
+                   TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFEEFF00" Width="392"/>
     </Grid>
 </Page>
