@@ -14,61 +14,64 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Windows.Security.ExchangeActiveSyncProvisioning;
-using Microsoft.Toolkit.Uwp.Notifications;
+using System.Reflection;
+using Windows.UI.Xaml.Media.Animation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace applicationLauncher
 {
     /// <summary>
-    /// A page with many buttons:)
+    /// Contructs a(n) initial application page with a hamburger menu
     /// </summary>
     public sealed partial class MainPage : Page
     {
         public MainPage()
         {
             this.InitializeComponent();
+            NavigateToView("HomePage");
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        // Code reference: https://blogs.msmvps.com/bsonnino/2019/02/13/navigationview-in-uwp/
+        private NavigationViewItem _lastitem;
+
+        private void navView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            // I just found that ms-actioncenter:// does not available on Windows Phone, so I made this
-            EasClientDeviceInformation info = new EasClientDeviceInformation();
-            string system = info.OperatingSystem;
-            if (system == "WindowsPhone")
-            {
-                ContentDialog dlg = new ContentDialog
-                {
-                    Title = "Infomation",
-                    Content = "Protocol ms-actioncenter:// is not available on Windows Phone",
-                    CloseButtonText = "OK"
-                };
-                await dlg.ShowAsync();
+            var item = args.InvokedItem as NavigationViewItem;
+            if (item == null || item == _lastitem)
                 return;
-            }
-            
-            else
-            {
-                await QuickShortcuts.launcher.OpenProtocol("ms-actioncenter://", "Action center");
-            }
+            var clickedView = item.Tag?.ToString() ?? "SettingsView";
+            if (!NavigateToView(clickedView)) return;
+            _lastitem = item;
         }
 
-        private async void Button_Click_2(object sender, RoutedEventArgs e)
+        private bool NavigateToView(string clickedView)
         {
-            ContentDialog dialog = new ContentDialog {
-                Title = "About this app",
-                Content = "QuickShortcuts v1.0 by Le Bao Nguyen.\n" +
-                "Project source code: https://github.com/lebao3105/UWPQuickshortcuts",
+            var view = Assembly.GetExecutingAssembly()
+                .GetType($"QuickShortcuts.Views.{clickedView}");
+
+            if (string.IsNullOrWhiteSpace(clickedView) || view == null)
+            {
+                return false;
+            }
+            ContentFm.Navigate(view, null, new EntranceNavigationTransitionInfo());
+            return true;
+        }
+
+        private void navView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        {
+            if (ContentFm.CanGoBack)
+                ContentFm.GoBack();
+        }
+
+        private async void ContentFm_NavigationFailed(object sender, NavigationFailedEventArgs e)
+        {
+            var dlg = new ContentDialog
+            {
+                Title = "Error",
+                Content = "Unable to switch between pages via the hamburger menu.\nPlease contact the developer.",
                 CloseButtonText = "OK"
             };
-            await dialog.ShowAsync();
-        }
-
-        private async void settings_Click(object sender, RoutedEventArgs e)
-        {
-            QuickShortcuts.ContentDialog1 result = new QuickShortcuts.ContentDialog1();
-            await result.ShowAsync();
+            await dlg.ShowAsync();
         }
     }
 }

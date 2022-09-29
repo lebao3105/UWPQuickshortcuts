@@ -9,17 +9,18 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Height="33" Margin="30,42,0,0"
-                   Text="Quick Shortcuts" TextWrapping="Wrap"
-                   VerticalAlignment="Top" Width="181" FontSize="23"/>
-        <!--Buttons-->
-        <Button Content="Action center" Margin="0,277,0,0" VerticalAlignment="Top"
-                Height="34" Width="123" Click="Button_Click" HorizontalAlignment="Center"/>
-        <Button Content="Settings" Margin="0,361,0,0" VerticalAlignment="Top"
-                Height="34" Width="123" Click="settings_Click" HorizontalAlignment="Center"/>
-        <Button Content="About" Margin="0,445,0,0" VerticalAlignment="Top"
-                Height="34" Width="123" Click="Button_Click_2" HorizontalAlignment="Center"/>
-        <TextBlock HorizontalAlignment="Left" Margin="50,639,0,0" Text="*Note that not all links are available in your system."
-                   TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFEEFF00" Width="392"/>
+        <NavigationView x:Name="navView"
+                ItemInvoked="navView_ItemInvoked"
+                BackRequested="navView_BackRequested"
+                IsBackEnabled="{Binding ElementName=ContentFm, Path=CanGoBack}">
+            
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Home" Icon="Home" Tag="HomePage"/>
+                <NavigationViewItem Content="Applications" Icon="AllApps"/>
+            </NavigationView.MenuItems>
+            
+            <Frame x:Name="ContentFm" NavigationFailed="ContentFm_NavigationFailed"/>
+            
+        </NavigationView>
     </Grid>
 </Page>

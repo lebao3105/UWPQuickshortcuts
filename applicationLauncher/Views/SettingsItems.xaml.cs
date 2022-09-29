@@ -43,7 +43,7 @@ namespace QuickShortcuts
         //    "network-mobilehotspot", ""
         //};
 
-        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private async void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             switch (selected_item)
             {
@@ -87,7 +87,7 @@ namespace QuickShortcuts
                     cmd = "";
                     break;
             }
-            launcher.OpenProtocol("ms-settings://" + cmd, selected_item);
+            await launcher.OpenProtocol("ms-settings://" + cmd, selected_item);
         }
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
