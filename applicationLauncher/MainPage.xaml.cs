@@ -34,12 +34,18 @@ namespace applicationLauncher
         // Code reference: https://blogs.msmvps.com/bsonnino/2019/02/13/navigationview-in-uwp/
         private NavigationViewItem _lastitem;
 
-        private void navView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        private async void navView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
+            if (args.IsSettingsInvoked)
+            {
+                QuickShortcuts.ContentDialog1 dlg = new QuickShortcuts.ContentDialog1();
+                await dlg.ShowAsync();
+            }
+
             var item = args.InvokedItem as NavigationViewItem;
             if (item == null || item == _lastitem)
                 return;
-            var clickedView = item.Tag?.ToString() ?? "SettingsView";
+            var clickedView = item.Tag?.ToString();
             if (!NavigateToView(clickedView)) return;
             _lastitem = item;
         }

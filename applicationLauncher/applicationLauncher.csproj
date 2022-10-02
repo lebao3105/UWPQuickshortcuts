@@ -128,6 +128,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AppsList.xaml.cs">
+      <DependentUpon>AppsList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingsItems.xaml.cs">
       <DependentUpon>SettingsItems.xaml</DependentUpon>
     </Compile>
@@ -160,6 +163,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\AppsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SettingsItems.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -15,7 +15,9 @@
     <Grid>
         <ComboBox x:Name="ItemsCombo" Header="There are several locations you can go on Settings. Choose one."
                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                  SelectionChanged="ItemsCombo_SelectionChanged">
+                  SelectionChanged="ItemsCombo_SelectionChanged"
+                  PlaceholderText="*Not all links are available on the system."
+                  PlaceholderForeground="Yellow">
             <!--Account-->
             <x:String>Sign-in options</x:String>
             <x:String>Your info</x:String>

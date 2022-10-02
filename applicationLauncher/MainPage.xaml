@@ -16,7 +16,7 @@
             
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="Home" Icon="Home" Tag="HomePage"/>
-                <NavigationViewItem Content="Applications" Icon="AllApps"/>
+                <NavigationViewItem Content="Applications" Icon="AllApps" Tag="AppsList"/>
             </NavigationView.MenuItems>
             
             <Frame x:Name="ContentFm" NavigationFailed="ContentFm_NavigationFailed"/>
