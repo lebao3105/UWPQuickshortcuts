@@ -9,11 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Height="33" Margin="10,10,0,0"
+        <TextBlock HorizontalAlignment="Center" Height="33"
                    Text="Quick Shortcuts" TextWrapping="Wrap"
-                   VerticalAlignment="Top" Width="181" FontSize="23"/>
+                   VerticalAlignment="Top" Width="163" FontSize="23" Margin="0,189,0,0"/>
         <!--Buttons-->
-        <Button Content="Action center" Margin="0,248,0,0" VerticalAlignment="Top"
+        <Button Content="Action center" Margin="0,242,0,0" VerticalAlignment="Top"
                 Height="34" Width="123" Click="Button_Click" HorizontalAlignment="Center"/>
         <Button Content="Settings" Margin="0,341,0,0" VerticalAlignment="Top"
                 Height="34" Width="123" Click="Button_Click_1" HorizontalAlignment="Center"/>

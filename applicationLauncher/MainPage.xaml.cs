@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -13,9 +14,8 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using System.Reflection;
 using Windows.UI.Xaml.Media.Animation;
+using Windows.UI.Xaml.Navigation;
 
 
 namespace applicationLauncher
@@ -40,6 +40,7 @@ namespace applicationLauncher
             {
                 QuickShortcuts.ContentDialog1 dlg = new QuickShortcuts.ContentDialog1();
                 await dlg.ShowAsync();
+                return;
             }
 
             var item = args.InvokedItem as NavigationViewItem;

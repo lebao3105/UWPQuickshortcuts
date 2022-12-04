@@ -14,13 +14,10 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace QuickShortcuts.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+    
     public sealed partial class HomePage : Page
     {
         public HomePage()
@@ -30,7 +27,7 @@ namespace QuickShortcuts.Views
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            // I just found that ms-actioncenter:// does not available on Windows Phone, so I made this
+            // I found out that ms-actioncenter:// does not available on Windows Phone, so I made this
             EasClientDeviceInformation info = new EasClientDeviceInformation();
             string system = info.OperatingSystem;
             if (system == "WindowsPhone")
@@ -38,7 +35,7 @@ namespace QuickShortcuts.Views
                 ContentDialog dlg = new ContentDialog
                 {
                     Title = "Infomation",
-                    Content = "Protocol ms-actioncenter:// is not available on Windows Phone",
+                    Content = "Opening action center is not supported on Windows Phone",
                     CloseButtonText = "OK"
                 };
                 await dlg.ShowAsync();
@@ -59,7 +56,7 @@ namespace QuickShortcuts.Views
             ContentDialog dialog = new ContentDialog
             {
                 Title = "About this app",
-                Content = "QuickShortcuts v1.0 by Le Bao Nguyen.\n" +
+                Content = "QuickShortcuts v1.0.1(dev) by Le Bao Nguyen.\n" +
                 "Project source code: https://github.com/lebao3105/UWPQuickshortcuts",
                 CloseButtonText = "OK"
             };

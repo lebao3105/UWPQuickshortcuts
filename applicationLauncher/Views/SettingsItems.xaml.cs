@@ -87,7 +87,7 @@ namespace QuickShortcuts
                     cmd = "";
                     break;
             }
-            await launcher.OpenProtocol("ms-settings://" + cmd, selected_item);
+            await launcher.OpenProtocol("ms-settings://" + cmd, selected_item + " on Settings");
         }
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

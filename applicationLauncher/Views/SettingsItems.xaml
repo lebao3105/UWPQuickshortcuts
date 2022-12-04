@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Title="Infomation"
+    Title="Windows Settings"
     PrimaryButtonText="Launch"
     SecondaryButtonText="Cancel"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
@@ -16,8 +16,8 @@
         <ComboBox x:Name="ItemsCombo" Header="There are several locations you can go on Settings. Choose one."
                   HorizontalAlignment="Center" VerticalAlignment="Center"
                   SelectionChanged="ItemsCombo_SelectionChanged"
-                  PlaceholderText="*Not all links are available on the system."
-                  PlaceholderForeground="Yellow">
+                  PlaceholderText="*Not all links are available on your system!"
+                  PlaceholderForeground="Red">
             <!--Account-->
             <x:String>Sign-in options</x:String>
             <x:String>Your info</x:String>
@@ -35,7 +35,7 @@
             <x:String>Cellular</x:String>
             <x:String>Mobile hostpot</x:String>
             <!--Just launch Settings-->
-            <x:String>Settings</x:String>
+            <x:String>The Settings app itself</x:String>
         </ComboBox>
     </Grid>
 </ContentDialog>
