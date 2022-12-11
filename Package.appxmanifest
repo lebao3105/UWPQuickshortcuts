@@ -4,18 +4,19 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
-  IgnorableNamespaces="uap mp">
+  xmlns:iot="http://schemas.microsoft.com/appx/manifest/iot/windows10"
+  IgnorableNamespaces="uap mp iot">
 
   <Identity
-    Name="2386b969-ec59-4831-a039-b6a4bf49f37b"
-    Publisher="CN=Dell"
-    Version="1.0.0.0" />
+    Name="UWPQuickShortcuts"
+    Publisher="CN=Le Bao Nguyen"
+    Version="1.0.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="2386b969-ec59-4831-a039-b6a4bf49f37b" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>UWPQuickshortcuts</DisplayName>
-    <PublisherDisplayName>Dell</PublisherDisplayName>
+    <DisplayName>UWPQuickShortcuts</DisplayName>
+    <PublisherDisplayName>Le Bao Nguyen</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -32,18 +33,30 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="UWPQuickshortcuts.App">
       <uap:VisualElements
-        DisplayName="UWPQuickshortcuts"
+        DisplayName="QuickShortcuts"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="UWPQuickshortcuts"
+        Description="A launcher to run stuff"
         BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo"/>
+            <uap:ShowOn Tile="wide310x150Logo"/>
+            <uap:ShowOn Tile="square310x310Logo"/>
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile >
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="portrait"/>
+          <uap:Rotation Preference="landscape"/>
+          <uap:Rotation Preference="landscapeFlipped"/>
+          <uap:Rotation Preference="portraitFlipped"/></uap:InitialRotationPreference>
+        <uap:LockScreen BadgeLogo="Assets\BadgeLogo.png"  Notification="badge"/>
       </uap:VisualElements>
     </Application>
   </Applications>
 
   <Capabilities>
-    <Capability Name="internetClient" />
-  </Capabilities>
+    <iot:Capability Name="systemManagement"/>
+    <DeviceCapability Name="lowLevel"/></Capabilities>
 </Package>

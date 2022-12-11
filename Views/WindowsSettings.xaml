@@ -1,0 +1,41 @@
+﻿<ContentDialog
+    x:Class="UWPQuickshortcuts.Views.WindowsSettings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPQuickshortcuts.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Windows Settings"
+    PrimaryButtonText="Launch"
+    SecondaryButtonText="Cancel"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <Grid>
+        <ComboBox x:Name="ItemsCombo" Header="There are several locations you can go on Settings. Choose one."
+                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                  SelectionChanged="ItemsCombo_SelectionChanged"
+                  PlaceholderText="*Not all links are available on your system!"
+                  PlaceholderForeground="Red">
+            <!--Account-->
+            <x:String>Sign-in options</x:String>
+            <x:String>Your info</x:String>
+            <!--Apps and Features-->
+            <x:String>Apps and Features</x:String>
+            <x:String>Default apps</x:String>
+            <!--Devices-->
+            <x:String>Bluetooth</x:String>
+            <x:String>Camera</x:String>
+            <x:String>Mouse (and touchpad)</x:String>
+            <x:String>USB</x:String>
+            <!--Network settings here-->
+            <x:String>Wifi</x:String>
+            <x:String>Airplane mode</x:String>
+            <x:String>Cellular</x:String>
+            <x:String>Mobile hostpot</x:String>
+            <!--Just launch Settings-->
+            <x:String>The Settings app itself</x:String>
+        </ComboBox>
+    </Grid>
+</ContentDialog>
