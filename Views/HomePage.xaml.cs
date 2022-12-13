@@ -55,6 +55,12 @@ namespace UWPQuickshortcuts.Views
 
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            UWPQuickshortcuts.Views.PowerOpts dlg = new UWPQuickshortcuts.Views.PowerOpts();
+            await dlg.ShowAsync();
+        }
+
+        private async void Button_Click_3(object sender, RoutedEventArgs e)
+        {
             ContentDialog dialog = new ContentDialog
             {
                 Title = "About this app",
