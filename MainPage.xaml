@@ -1,0 +1,30 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPQuickshortcuts"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:Custom="using:Microsoft.UI.Xaml.Controls.Primitives"
+    x:Class="UWPQuickshortcuts.MainPage"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <muxc:NavigationView x:Name="navView"
+                ItemInvoked="navView_ItemInvoked"
+                BackRequested="navView_BackRequested"
+                IsBackEnabled="{Binding ElementName=ContentFm, Path=CanGoBack}">
+
+            <muxc:NavigationView.MenuItems>
+                <muxc:NavigationViewItem Content="Home" Icon="Home" Tag="HomePage"/>
+                <muxc:NavigationViewItem Content="Applications" Icon="AllApps" Tag="AppsList"/>
+                <muxc:NavigationViewItem Content="Power Options" Icon="CellPhone" Tag="PowerOpts"/>
+            </muxc:NavigationView.MenuItems>
+
+            <Frame x:Name="ContentFm" NavigationFailed="ContentFm_NavigationFailed"/>
+
+        </muxc:NavigationView>
+
+    </Grid>
+</Page>
