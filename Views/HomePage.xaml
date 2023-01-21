@@ -18,9 +18,7 @@
                 Height="34" Width="123" Click="Button_Click" HorizontalAlignment="Center"/>
         <Button Content="Settings" Margin="0,341,0,0" VerticalAlignment="Top"
                 Height="34" Width="123" Click="Button_Click_1" HorizontalAlignment="Center"/>
-        <Button Content="Power" Margin="0,440,0,0" VerticalAlignment="Top"
+        <Button Content="About" Margin="0,440,0,0" VerticalAlignment="Top"
                 Height="34" Width="123" Click="Button_Click_2" HorizontalAlignment="Center"/>
-        <Button Content="About" Margin="0,539,0,0" VerticalAlignment="Top"
-                Height="34" Width="123" Click="Button_Click_3" HorizontalAlignment="Center"/>
     </Grid>
 </Page>

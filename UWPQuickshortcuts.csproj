@@ -130,9 +130,6 @@
     <Compile Include="Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PowerOpts.xaml.cs">
-      <DependentUpon>PowerOpts.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\WindowsSettings.xaml.cs">
       <DependentUpon>WindowsSettings.xaml</DependentUpon>
     </Compile>
@@ -211,10 +208,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\HomePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PowerOpts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

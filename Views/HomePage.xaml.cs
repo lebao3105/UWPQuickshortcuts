@@ -55,16 +55,10 @@ namespace UWPQuickshortcuts.Views
 
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            UWPQuickshortcuts.Views.PowerOpts dlg = new UWPQuickshortcuts.Views.PowerOpts();
-            await dlg.ShowAsync();
-        }
-
-        private async void Button_Click_3(object sender, RoutedEventArgs e)
-        {
             ContentDialog dialog = new ContentDialog
             {
                 Title = "About this app",
-                Content = "QuickShortcuts v1.0.1(dev) by Le Bao Nguyen.\n" +
+                Content = "QuickShortcuts v1.0.1 by Le Bao Nguyen.\n" +
                 "Project source code: https://github.com/lebao3105/UWPQuickshortcuts",
                 CloseButtonText = "OK"
             };

@@ -55,8 +55,4 @@
       </uap:VisualElements>
     </Application>
   </Applications>
-
-  <Capabilities>
-    <iot:Capability Name="systemManagement"/>
-    <DeviceCapability Name="lowLevel"/></Capabilities>
 </Package>
