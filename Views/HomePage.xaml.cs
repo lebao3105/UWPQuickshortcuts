@@ -58,7 +58,7 @@ namespace UWPQuickshortcuts.Views
             ContentDialog dialog = new ContentDialog
             {
                 Title = "About this app",
-                Content = "QuickShortcuts v1.0.1(dev) by Le Bao Nguyen.\n" +
+                Content = "QuickShortcuts v1.0.1 by Le Bao Nguyen.\n" +
                 "Project source code: https://github.com/lebao3105/UWPQuickshortcuts",
                 CloseButtonText = "OK"
             };

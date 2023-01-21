@@ -56,16 +56,7 @@ namespace UWPQuickshortcuts
             if (item == null || item == _lastitem)
                 return;
             var clickedView = item.Tag?.ToString();
-            Debug.WriteLine(clickedView);
-            if (clickedView == "Power Options")
-            {
-                UWPQuickshortcuts.Views.PowerOpts dlg = new UWPQuickshortcuts.Views.PowerOpts();
-                await dlg.ShowAsync();
-            }
-            else
-            {
-                if (!NavigateToView(clickedView)) return;
-            }
+            if (!NavigateToView(clickedView)) return;
             _lastitem = item;
         }
 
@@ -80,7 +71,7 @@ namespace UWPQuickshortcuts
             var dlg = new ContentDialog
             {
                 Title = "Error",
-                Content = "Unable to switch between pages via the hamburger menu.\nPlease contact the developer.",
+                Content = "Unable to switch between pages via the hamburger menu.",
                 CloseButtonText = "OK"
             };
             await dlg.ShowAsync();

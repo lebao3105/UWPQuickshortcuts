@@ -31,7 +31,7 @@ namespace UWPQuickshortcuts
             }
             else
             {
-                text = "Error occured while opening " + name;
+                text = "Error occured opening " + name;
             }
 
             new ToastContentBuilder()

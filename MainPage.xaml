@@ -19,7 +19,6 @@
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItem Content="Home" Icon="Home" Tag="HomePage"/>
                 <muxc:NavigationViewItem Content="Applications" Icon="AllApps" Tag="AppsList"/>
-                <muxc:NavigationViewItem Content="Power Options" Icon="CellPhone" Tag="PowerOpts"/>
             </muxc:NavigationView.MenuItems>
 
             <Frame x:Name="ContentFm" NavigationFailed="ContentFm_NavigationFailed"/>
