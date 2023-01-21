@@ -25,54 +25,32 @@ namespace UWPQuickshortcuts.Views
         }
 
         private string selected_item;
-        private string cmd;
+        private Dictionary<string, string> selected_command = new Dictionary<string, string>();
 
         private async void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            switch (selected_item)
-            {
-                case "Sign-in options":
-                    cmd = "signinoptions";
-                    break;
-                case "Your info":
-                    cmd = "yourinfo";
-                    break;
-                case "Apps and Features":
-                    cmd = "appsfeatures";
-                    break;
-                case "Default apps":
-                    cmd = "defaultapps";
-                    break;
-                case "Bluetooth":
-                    cmd = "bluetooth";
-                    break;
-                case "Camera":
-                    cmd = "camera";
-                    break;
-                case "Mouse (and touchpad)":
-                    cmd = "mousetouchpad";
-                    break;
-                case "USB":
-                    cmd = "usb";
-                    break;
-                case "Wifi":
-                    cmd = "network-wifi";
-                    break;
-                case "Airplane mode":
-                    cmd = "proximity";
-                    break;
-                case "Cellular":
-                    cmd = "network-cellular";
-                    break;
-                case "Mobile hotspot":
-                    cmd = "network-mobilehotpost";
-                    break;
-            }
+            selected_command.Add("Sign-in options", "signinoptions");
+            selected_command.Add("Your info", "yourinfo");
+            selected_command.Add("Apps and Features", "appsfeatures");
+            selected_command.Add("Default apps", "defaultapps");
+            selected_command.Add("Bluetooth", "bluetooth");
+            selected_command.Add("Camera", "camera");
+            selected_command.Add("Mouse (and touchpad)", "mousetouchpad");
+            selected_command.Add("USB", "usb");
+            selected_command.Add("Wifi", "network-wifi");
+            selected_command.Add("Airplane mode", "proximity");
+            selected_command.Add("Cellular", "network-cellular");
+            selected_command.Add("Mobile hotspot", "network-mobilehotspot");
+
             if (selected_item == "Settings") {
-                await launcher.OpenProtocol("ms-settings://", "Windows Settings");
-                return;
+                await launcher.OpenProtocol("ms-settings:", "Windows Settings");
             }
-            await launcher.OpenProtocol("ms-settings://" + cmd, selected_item + " on Settings");
+            else
+            {
+                await launcher.OpenProtocol("ms-settings:" + selected_command[selected_item], selected_item + " on Settings");
+            }
+            return;
+            
         }
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
