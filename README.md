@@ -13,4 +13,4 @@ A simple launcher for Windows's Action Center + Settings, for UWP Platform.
 ## Notes
 * Basically I made this app for Windows 10 Mobile instead, on PC we have keyboard and mouse:)
 * You can't open Action center on Windows 10 Mobile because ```ms-actioncenter://``` procotol which is used to open the Action center does not available on W10M.
-* Actually I run Settings pages with its protocol links (link [here.](https://docs.microsoft.com/en-us/windows/uwp/launch-resume/launch-settings-app))
+* Actually I open Settings pages by protocol links (link [here.](https://docs.microsoft.com/en-us/windows/uwp/launch-resume/launch-settings-app))
